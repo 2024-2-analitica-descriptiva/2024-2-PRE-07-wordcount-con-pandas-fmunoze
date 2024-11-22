@@ -77,6 +77,12 @@ def save_output(dataframe, output_directory):
     )
 
 
+def create_marker(output_directory):
+    """Create Marker"""
+
+    with open(f"{output_directory}/_SUCCESS", "w", encoding="utf-8") as f:
+        f.write("")
+
 #
 # Escriba la función job, la cual orquesta las funciones anteriores.
 #
@@ -87,6 +93,7 @@ def run_job(input_directory, output_directory):
     dataframe = clean_text(dataframe)
     dataframe = count_words(dataframe)
     save_output(dataframe, output_directory)
+    create_marker(output_directory)
 
 
 
